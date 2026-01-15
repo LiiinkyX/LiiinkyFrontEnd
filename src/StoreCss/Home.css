@@ -1,0 +1,36 @@
+ ._home{
+ 
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+ .btn1 {
+    width: 120px; /* slightly wider for better look */
+    padding: 10px 20px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc); /* smooth gradient */
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* soft shadow */
+    transition: all 0.3s ease; /* smooth animation on hover */
+}
+
+/* Hover effect */
+.btn1:hover {
+    transform: translateY(-3px); /* slight lift */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* stronger shadow */
+    background: linear-gradient(135deg, #2575fc, #6a11cb); /* gradient flip */
+}
+
+/* Active/click effect */
+.btn1:active {
+    transform: translateY(1px); /* button pressed down */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

@@ -1,5 +1,8 @@
- :root{
-     --sizeVideo : 150px; 
+  
+@media (max-width: 850px)    {
+  
+  :root{
+     --sizeVideo : 145px; 
   --widthAvtar : 64px;
   --heigthAvtar : 64px;
   --borderAvtar : 50%;
@@ -31,16 +34,20 @@
 
  .designmatch{
     width: 100%;
-    height: 300px;
+    height: 288px;
     border:2px solid black ;
     margin: 3px;
     border-radius: 10px;
+        display: flex;
+    justify-content: center;
+    align-items: center;
  }
  .designmatch video{
      width: 100%;
     object-fit: cover;
     height: 100%;
     border-radius: 10px; 
+    
 }
  .__Vibe-room{
     overflow: hidden;
@@ -154,3 +161,343 @@
 
   cursor: pointer;
 }
+  
+}
+
+@media (min-width: 884px) {
+  
+  :root{
+  --sizeVideo : 100%; 
+  --widthAvtar : 64px;
+  --heigthAvtar : 64px;
+  --borderAvtar : 50%;
+  --typeOfObject: cover:
+  
+ }
+ 
+
+ .magiqueMatching{
+     width: 100%;
+     height: 150px;
+     border-radius: 13px;
+     background-color: #2C3035 ;
+     border:1px solid #F7F7F7 ;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     
+     top: 20px;
+     overflow: hidden;
+
+     
+ }
+ .__ContainerLiinky{
+    background-color: #0D1117;
+    height: 100vh;
+ }
+
+ .designmatch{
+    width: 100%;
+    height:380px;
+         display: flex;
+    justify-content: center;
+    align-items: center;
+    border:2px solid black ;
+    margin: 3px;
+    border-radius: 10px;
+ }
+ .designmatch video{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 10px; 
+    
+}
+ .__Vibe-room{
+    overflow: hidden;
+     
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+ .me{
+    width: var( --sizeVideo);
+  
+ height:380px; 
+    
+  
+  
+  
+   
+  
+ }
+ 
+ .me video{
+     
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; 
+ }
+ 
+.action-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; 
+  
+  width: 100%;
+  margin-top: 20px;
+}
+
+.action-bar {
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, #0f1623, #0b101a);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+ 
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn.add {
+  background: #2f6bff;
+}
+
+.btn.meet {
+  background: #e8f1ff;
+  color: #1e3a8a;
+}
+
+.btn.skip {
+  background: #e05252;
+}
+.label {
+  padding: 6px 16px;
+  background: #1c2230;
+  color: #cbd5e1;
+  font-size: 14px;
+  border-radius: 999px;
+  width: 200px;
+  text-align: center;
+}
+ 
+
+.TitleApplication {
+   margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 2px 10px rgba(214, 41, 118, 0.35);
+
+  cursor: pointer;
+}
+}
+
+
+@media (min-width: 1281px){
+   
+
+  :root{
+  --sizeVideo : 100%; 
+  --widthAvtar : 64px;
+  --heigthAvtar : 64px;
+  --borderAvtar : 50%;
+  --typeOfObject: cover:
+  
+ }
+ 
+
+ .magiqueMatching{
+     width:50%;
+     height: 150px;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 10px;
+     border-radius: 13px;
+     background-color: #2C3035 ;
+     border:1px solid #F7F7F7 ;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-wrap: wrap;
+     
+     top: 20px;
+     overflow: hidden;
+
+     
+ }
+ .__ContainerLiinky{
+    background-color: #0D1117;
+    height: 100vh;
+ }
+
+ .designmatch{
+    width: 100%;
+    height:500px;
+    
+    border:2px solid black ;
+    margin: 3px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+ }
+ 
+ .designmatch video{
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    border-radius: 10px; 
+}
+ .__Vibe-room{
+    overflow: hidden;
+     
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+ .me{
+    width: var( --sizeVideo);
+  
+ height:500px; 
+    
+  
+  
+  
+   
+  
+ }
+ 
+ .me video{
+     
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px; 
+ }
+ 
+.action-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; 
+  
+  width: 100%;
+  margin-top: 20px;
+}
+
+.action-bar {
+  cursor: pointer;
+  display: flex;
+  gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(180deg, #0f1623, #0b101a);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+ 
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn.add {
+  background: #2f6bff;
+}
+
+.btn.meet {
+  background: #e8f1ff;
+  color: #1e3a8a;
+}
+
+.btn.skip {
+  background: #e05252;
+}
+.label {
+  padding: 6px 16px;
+  background: #1c2230;
+  color: #cbd5e1;
+  font-size: 14px;
+  border-radius: 999px;
+  width: 200px;
+  text-align: center;
+}
+ 
+
+.TitleApplication {
+   margin-bottom: 10px;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+     
+  background: linear-gradient(
+    45deg,
+    #feda75,
+    #fa7e1e,
+    #d62976,
+    #962fbf,
+    #4f5bd5
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow:
+    0 2px 10px rgba(214, 41, 118, 0.35);
+
+  cursor: pointer;
+  
+}
+}
+
+  .heart{
+
+   width: 340px;
+
+    
+  }
+   
