@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from "react";
+import React, {  StrictMode, useEffect, useRef, useState } from "react";
 import MagiqueMatching from "../Component/MagiqueMatching";
 import "../StoreCss/LiinkkyMeet.css";
 import {useNavigate}  from "react-router-dom"
@@ -27,7 +27,77 @@ import Loader4 from "../test/Test4";
 
 const RANDOM__MATCH = 8;
 
+
+  //  <div className="listofCapbiltes">
+  //     {listOfCamera.length === 0 ? (
+  //       <p>No camera found</p> 
+  //     ) : (
+  //       listOfCamera.map((camera, index) => (
+  //         <>  
+  //         <p key={camera.deviceId} style={{color:"white",cursor:"pointer"}} onClick={()=>setmyPreferredCameraDeviceId(camera.deviceId)}>
+  //           Camera {index + 1}: {camera.label || "Unknown camera"}
+  //         </p>
+          
+  //         </>
+  //       ))
+  //     )}
+  //   </div>
+
+
+
+
 const LiinkkyMeet = () => {
+
+
+
+
+ //-----------------------------WebRtcParams-----------------------------------------
+
+ 
+ const [myPreferredCameraDeviceId,setmyPreferredCameraDeviceId] = useState(null)
+ const [listOfCamera,SetlistOfCamera ]= useState([])
+ const myvideoCamera = useRef(null)
+ const refStream = useRef(null)
+ const intialzeCamera = async()=>{
+  try{
+//  ------------------------------------get_access--------------------------------------------- 
+
+   const stream = await navigator.mediaDevices.getUserMedia({video:myPreferredCameraDeviceId ?  {  deviceId: {exact:myPreferredCameraDeviceId}} : true,audio:false})
+   refStream.current  = stream
+   if(refStream.current)  myvideoCamera.current.srcObject  = refStream.current 
+
+ 
+//mediarcorder
+// ---------------get__all__id__devicde___exisite__________________
+  const listCapbilites =   await navigator.mediaDevices.enumerateDevices()
+  const listofVideo =   listCapbilites.filter((item)=>item.kind =="videoinput")
+  SetlistOfCamera(listofVideo)
+ 
+    
+  }catch(error){
+    console.log(error)
+  }
+ }
+
+ useEffect(()=>{
+  intialzeCamera();
+
+  return () => {
+      if (refStream.current) {
+        refStream.current.getTracks().forEach(track => track.stop());
+      }
+    }
+ },[myPreferredCameraDeviceId])
+ 
+  
+ 
+ 
+
+
+
+
+  //----------------------------------------------------------------------
+  
   const Nav  = useNavigate()
   const [count, setCount] = useState(0);
   const intervalRef = useRef(null);
@@ -35,6 +105,8 @@ const LiinkkyMeet = () => {
   const [isSearching,SetIsSearhing] = useState(false)
   const loaderComponents = [Loader, Loader1, Loader3, Loader4];
   const [increamntLoader,setLoader] = useState(0);
+  //----------------------------------------------------------------------
+
 
   function animateShow(){
     SetAnimate(true)
@@ -52,11 +124,12 @@ const LiinkkyMeet = () => {
       
 }
  
-// {!Animate ?    <button onClick={()=>animateShow()}>animate</button>     : <p>error</p>}
  
   return (
     <div className="__ContainerLiinky">
       <div className="TitleApplication" onClick={()=>Nav("/")}>Linkky</div>
+       
+
       <MagiqueMatching ListMatch={List} indexMatch={count} />
 
 
@@ -66,19 +139,23 @@ const LiinkkyMeet = () => {
              
          </div>
          <div className="me">
-           <video src="/7261928-uhd_3840_2160_25fps.mp4"  className="me1"  autoPlay  playsInline loop   />
+           <video   ref={myvideoCamera}   className="me1"  autoPlay  playsInline     />
          </div>
       </div>
 
-   <div className="action-wrapper">
+     <div className="action-wrapper">
       <div className="action-bar">
-        <button className="btn add" onClick={()=>setLoader((prev)=>(prev+1)%loaderComponents.length)}>＋ Add</button>
+        <button className="btn add" onClick={()=>{
+        setLoader((prev)=>(prev+1)%loaderComponents.length)
+        SetIsSearhing((prev)=>!prev)
+
+        }}>＋ Add</button>
         <button className="btn meet">👥 Meet</button>
         <button className="btn skip">✕ Skip</button>
         
       </div>
            <div className="label">chats</div>
-    </div>
+     </div>
 
 
     </div>
@@ -86,3 +163,5 @@ const LiinkkyMeet = () => {
 };
 
 export default LiinkkyMeet;
+
+ 

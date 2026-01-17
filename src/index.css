@@ -10,6 +10,13 @@
 }
 
 body{
-    background-color: #0D1117;
+    background-color: #e1e7ee;
 }
  
+.testing{
+    display: flex;
+    video{
+        width: 800px;
+
+    }
+}

@@ -1,0 +1,112 @@
+  
+
+import {useEffect, useRef, useState } from 'react'
+import createAnswerFromOffer from '../ComponentWebRtcConnection/AcceptAnswer';
+import CreateOffer from '../ComponentWebRtcConnection/CreateOffer';
+import NewConnection from '../ComponentWebRtcConnection/NewConnection';
+
+
+ 
+
+
+
+const WebRtc = () => {
+ const iceServers = [
+    {
+      urls: 'stun:stun.l.google.com:19302',  
+    },
+  ] 
+ const peerConnectionA = useRef(null);
+ const localStream = useRef(null);
+ const remoteStream = useRef(null);
+
+
+ const mycamera = useRef(null)
+ const mycamera2 = useRef(null)
+
+const [p1,setp1] =useState("")
+const [p2,setp2] = useState("")
+ 
+ 
+
+
+
+ 
+
+
+
+
+ //negotiationneeded
+
+
+
+
+useEffect(()=>{
+   
+    
+  
+      return () => {
+      if (localStream.current) {
+        localStream.current.getTracks().forEach(track => track.stop());
+        
+      }
+      if(remoteStream.current){
+       remoteStream.current.getTracks().forEach(track => track.stop());
+      }
+    }  
+},[])
+ 
+ 
+
+
+ 
+
+ 
+
+ 
+const HandelSkip  = async()=>{
+   
+    try{
+      await  NewConnection(localStream,remoteStream,peerConnectionA,iceServers,mycamera,mycamera2); 
+
+      const offer = await CreateOffer(peerConnectionA)
+      setp1(JSON.stringify(offer))
+    
+     
+   
+
+    }
+    catch(error){
+      console.log(error)
+    }
+  
+}
+const createanswer  = async()=>{
+     const answer = await createAnswerFromOffer(JSON.stringify(p1), peerConnectionA);
+     setp2(JSON.stringify(answer))
+}
+return (
+ 
+ <> 
+ <div className="testing">
+
+ <video   ref={mycamera} autoPlay/>
+ <video   ref={mycamera2}    autoPlay/>
+ 
+
+ </div>
+ 
+<button style={{cursor:"pointer"}} onClick={()=>HandelSkip()}>  offer</button>
+<button style={{cursor:"pointer"}} onClick={()=>createanswer()}>  createanswer</button>
+<br/>
+ <input type='text' style={{width:"100%"}} placeholder='offer' value={p1}   onChange={(e)=>setp1(e.target.value)}/>
+ <input type='text' style={{width:"100%"}} placeholder='answer' value={p2} onChange={(e)=>setp2(e.target.value)} />
+ 
+ </>
+  )
+}
+
+export default WebRtc
+
+
+ 

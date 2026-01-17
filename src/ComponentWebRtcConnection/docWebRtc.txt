@@ -1,0 +1,257 @@
+   
+
+import {useEffect, useRef } from 'react'
+import createAnswerFromOffer from '../ComponentWebRtcConnection/AcceptAnswer';
+import CreateOffer from '../ComponentWebRtcConnection/CreateOffer';
+import NewConnection from '../ComponentWebRtcConnection/NewConnection';
+
+
+ 
+
+
+
+const WebRtc = () => {
+ const iceServers = [
+    {
+      urls: 'stun:stun.l.google.com:19302',  
+    },
+  ] 
+ const peerConnectionA = useRef(null);
+ const localStream = useRef(null);
+ const remoteStream = useRef(null);
+
+
+ const mycamera = useRef(null)
+ const mycamera2 = useRef(null)
+
+
+ 
+
+
+
+
+
+
+
+
+
+ //negotiationneeded
+
+
+
+
+useEffect(()=>{
+   
+    
+  
+      return () => {
+      if (localStream.current) {
+        localStream.current.getTracks().forEach(track => track.stop());
+        
+      }
+      if(remoteStream.current){
+       remoteStream.current.getTracks().forEach(track => track.stop());
+      }
+    }  
+},[])
+ 
+ 
+
+
+ 
+
+
+
+ 
+const HandelSkip  = async()=>{
+   
+    try{
+     peerConnectionA.current =   await  NewConnection(localStream,remoteStream,peerConnectionA,iceServers,mycamera,mycamera2); // so it will be like this ??? in original work??
+
+      const offer = await CreateOffer(peerConnectionA)
+      const answer = await createAnswerFromOffer(offer, peerConnectionA);
+    
+     console.log(offer)
+     console.log(answer);
+     console.log("----------------------------")
+     console.log(peerConnectionA)
+
+    }
+    catch(error){
+      console.log(error)
+    }
+  
+}
+
+return (
+ 
+ <> 
+ <div className="testing">
+
+ <video   ref={mycamera} autoPlay/>
+ <video   ref={mycamera2}    autoPlay/>
+ 
+
+ </div>
+ 
+<button style={{cursor:"pointer"}} onClick={()=>HandelSkip()}>new connection</button>
+
+
+ </>
+  )
+}
+
+export default WebRtc
+
+
+ 
+
+ import CleanupConnection from "./CleanupConnection";
+
+ 
+
+const NewConnection =  async (localStream,remoteStream,peerConnectionA,iceServers,mycamera,mycamera2) => {
+ 
+   
+  CleanupConnection(localStream,remoteStream,peerConnectionA)
+ 
+  peerConnectionA.current = new RTCPeerConnection({ iceServers });
+
+   
+  peerConnectionA.current.ontrack = (event) => {
+    event.streams[0].getTracks().forEach(track => remoteStream.current.addTrack(track));
+  };
+
+ 
+  localStream.current = await navigator.mediaDevices.getUserMedia({video:true, audio:false});
+  remoteStream.current = new MediaStream();
+
+  mycamera.current.srcObject = localStream.current;
+  mycamera2.current.srcObject = remoteStream.current;
+
+  localStream.current.getTracks().forEach(track => peerConnectionA.current.addTrack(track, localStream.current));
+  return peerConnectionA.current
+}
+
+ 
+
+export default NewConnection
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------
+ 
+
+import {useEffect, useRef, useState } from 'react'
+import createAnswerFromOffer from '../ComponentWebRtcConnection/AcceptAnswer';
+import CreateOffer from '../ComponentWebRtcConnection/CreateOffer';
+import NewConnection from '../ComponentWebRtcConnection/NewConnection';
+
+
+ 
+
+
+
+const WebRtc = () => {
+ const iceServers = [
+    {
+      urls: 'stun:stun.l.google.com:19302',  
+    },
+  ] 
+ const peerConnectionA = useRef(null);
+ const localStream = useRef(null);
+ const remoteStream = useRef(null);
+
+
+ const mycamera = useRef(null)
+ const mycamera2 = useRef(null)
+
+
+ 
+
+
+
+ 
+
+
+
+
+ //negotiationneeded
+
+
+
+
+useEffect(()=>{
+   
+    
+  
+      return () => {
+      if (localStream.current) {
+        localStream.current.getTracks().forEach(track => track.stop());
+        
+      }
+      if(remoteStream.current){
+       remoteStream.current.getTracks().forEach(track => track.stop());
+      }
+    }  
+},[])
+ 
+ 
+
+
+ 
+
+ 
+
+ 
+const HandelSkip  = async()=>{
+   
+    try{
+      await  NewConnection(localStream,remoteStream,peerConnectionA,iceServers,mycamera,mycamera2); 
+
+      const offer = await CreateOffer(peerConnectionA)
+      const answer = await createAnswerFromOffer(offer, peerConnectionA);
+    
+     console.log(offer)
+     
+     console.log(answer);
+     console.log("----------------------------")
+     console.log(peerConnectionA)
+
+    }
+    catch(error){
+      console.log(error)
+    }
+  
+}
+
+return (
+ 
+ <> 
+ <div className="testing">
+
+ <video   ref={mycamera} autoPlay/>
+ <video   ref={mycamera2}    autoPlay/>
+ 
+
+ </div>
+ 
+<button style={{cursor:"pointer"}} onClick={()=>HandelSkip()}>new connection</button>
+<br/>
+ 
+ </>
+  )
+}
+
+export default WebRtc
+
+
+ 
