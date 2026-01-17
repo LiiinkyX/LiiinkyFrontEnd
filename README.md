@@ -26,4 +26,4 @@ Built for large screens and wide displays, taking advantage of extra space for a
 
 ### 🔗 Quick Navigation (Image Map Icons)
 
-<img src="./map.png" alt="Desktop UI Design" width="900"/>
+<img src="./map.png" alt="Desktop UI Design" width="300"/>
