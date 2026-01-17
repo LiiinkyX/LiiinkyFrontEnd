@@ -6,6 +6,7 @@ import Home from './Pages/Home'
 import Loader from './test/Test'
 import WebRtc from './test/WebRtc'
 import TestWebscoekt from './test/TestWebscoekt'
+import CoupleMeetMap from './ComponentMaps/CoupleMeetMap'
 const App = () => {
   
   return (
@@ -15,8 +16,10 @@ const App = () => {
     <Go path='/v1' element={<><LiinkkyMeet/></>}/>
     <Go path='/test' element={<Loader/>}/>
     <Go path='/webRtc' element={<WebRtc/>}/>
-     <Go path='/testwebsocket' element={<TestWebscoekt/>}/>
-    
+    <Go path='/testwebsocket' element={<TestWebscoekt/>}/> 
+    <Go path="/love-spot" element={<CoupleMeetMap />} />
+
+
     <Go path='/*' element={<p>404</p>}/>
   </Router>
   

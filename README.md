@@ -23,3 +23,7 @@ Name: Desktop UI
 Built for large screens and wide displays, taking advantage of extra space for a rich user interface.
 
 <img src="./prototype3.png" alt="Desktop UI Design" width="900"/>
+
+### 🔗 Quick Navigation (Image Map Icons)
+
+<img src="./map.png" alt="Desktop UI Design" width="900"/>

@@ -6,6 +6,7 @@ import Loader from "../test/Test";
 import Loader1 from "../test/Test2";
 import Loader3 from "../test/Test3";
 import Loader4 from "../test/Test4";
+ 
  const List = [
   "https://i.pravatar.cc/200?img=1",
   "https://i.pravatar.cc/200?img=2",
@@ -139,7 +140,7 @@ const LiinkkyMeet = () => {
              
          </div>
          <div className="me">
-           <video   ref={myvideoCamera}   className="me1"  autoPlay  playsInline     />
+           <video   src="./7261928-uhd_3840_2160_25fps.mp4"   className="me1"  autoPlay  playsInline     />
          </div>
       </div>
 
@@ -150,7 +151,7 @@ const LiinkkyMeet = () => {
         SetIsSearhing((prev)=>!prev)
 
         }}>＋ Add</button>
-        <button className="btn meet">👥 Meet</button>
+        <button className="btn meet" onClick={()=>Nav("/love-spot?lang1=1.33332&lat1=2333&lang2=2.5454&lat2=43.22")}>👥 Meet</button>
         <button className="btn skip">✕ Skip</button>
         
       </div>

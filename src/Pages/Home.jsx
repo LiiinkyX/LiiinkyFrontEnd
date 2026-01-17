@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className='_home'>
         <button className='btn1' onClick={()=>Nav("/v1")}>Join</button>
-        
+         
     </div>
   )
 }
