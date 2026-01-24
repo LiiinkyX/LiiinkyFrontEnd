@@ -31,9 +31,8 @@ Built for large screens and wide displays, taking advantage of extra space for a
 
 
 
-<video width="320" height="240" controls>
- 
-  <source  src="./demoFeatu.webm"  type="video/webm">
- 
+ <video width="640" height="360" controls >
+  <source src="demoFeatu.webm" type="video/webm" />
+  
 </video>
 
