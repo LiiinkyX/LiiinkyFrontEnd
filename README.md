@@ -27,6 +27,7 @@ Built for large screens and wide displays, taking advantage of extra space for a
 
 // premuim user sectionn
 
- <video width="640" height="360" controls autoPlay loop muted poster="/poster.jpg">
+ <video width="640" height="360" controls >
   <source src="./demoFeatu.webm" type="video/webm" />
+  
 </video>
