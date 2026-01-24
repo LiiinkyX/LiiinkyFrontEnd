@@ -32,7 +32,7 @@ Built for large screens and wide displays, taking advantage of extra space for a
 
 
  <video width="640" height="360" controls >
-  <source src="./demoFeatu.webm" type="video/webm" />
+  <source src="./demo.mp4" type="video/mp4"/>
   
 </video>
 
