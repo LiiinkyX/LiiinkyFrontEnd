@@ -23,3 +23,10 @@ Name: Desktop UI
 Built for large screens and wide displays, taking advantage of extra space for a rich user interface.
 
 <img src="./prototype3.png" alt="Desktop UI Design" width="900"/>
+
+
+// premuim user sectionn
+
+ <video width="640" height="360" controls autoPlay loop muted poster="/poster.jpg">
+  <source src="./demoFeatu.webm" type="video/webm" />
+</video>
